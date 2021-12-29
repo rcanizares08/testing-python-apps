@@ -1,5 +1,6 @@
 from unittest import TestCase
-from post import Post
+from section3.video_code.post import Post
+# from post import Post
 
 
 class PostTest(TestCase):
@@ -12,4 +13,5 @@ class PostTest(TestCase):
     def test_json(self):
         p = Post('Test', 'Test content')
 
-        self.assertDictEqual({'title': p.title, 'content': p.content}, p.json())
+        self.assertDictEqual(
+            {'title': p.title, 'content': p.content}, p.json())
