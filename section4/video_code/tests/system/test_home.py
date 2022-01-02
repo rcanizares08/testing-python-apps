@@ -1,4 +1,4 @@
-from tests.system.base_test import BaseTest
+from section4.video_code.tests.system.base_test import BaseTest
 import json
 
 
@@ -7,4 +7,5 @@ class TestHome(BaseTest):
         with self.app() as c:
             r = c.get('/')
             self.assertEqual(r.status_code, 200)
-            self.assertEqual(json.loads(r.get_data()), {'message': 'Hello, world!'})
+            self.assertEqual(json.loads(r.get_data()), {
+                             'message': 'Hello, world!'})
