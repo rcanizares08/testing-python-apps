@@ -1,4 +1,4 @@
-from blog import Blog
+from section3.video_code.blog import Blog
 
 
 MENU_PROMPT = '\nEnter "c" to create a blog, "l" to list them, "r" to read one, "p" to write a post, or "q" to quit: '

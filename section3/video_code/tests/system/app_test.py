@@ -5,8 +5,8 @@ except ImportError:
     from mock import patch
 
 from section3.video_code import app
-from blog import Blog
-from post import Post
+from section3.video_code.blog import Blog
+from section3.video_code.post import Post
 
 
 class AppTest(TestCase):
@@ -19,7 +19,8 @@ class AppTest(TestCase):
             with patch('builtins.input', return_value='q'):
                 app.menu()
 
-                mocked_print.assert_called_with('- Test by Test Author (0 posts)')
+                mocked_print.assert_called_with(
+                    '- Test by Test Author (0 post)')
 
     def test_menu_prints_prompt(self):
         with patch('builtins.input', return_value='q') as mocked_input:
@@ -29,7 +30,8 @@ class AppTest(TestCase):
 
     def test_menu_calls_create_blog(self):
         with patch('builtins.input') as mocked_input:
-            mocked_input.side_effect = ('c', 'Test Two', 'Test Author Two', 'q')
+            mocked_input.side_effect = (
+                'c', 'Test Two', 'Test Author Two', 'q')
             app.menu()
 
             self.assertIsNotNone(app.blogs['Test Two'])
@@ -53,7 +55,8 @@ class AppTest(TestCase):
     def test_menu_calls_ask_create_post(self):
         with patch('builtins.input') as mocked_input:
             with patch('section3.video_code.app.ask_create_post') as mocked_ask_create_post:
-                mocked_input.side_effect = ('p', 'Test', 'New Post', 'New Content', 'q')
+                mocked_input.side_effect = (
+                    'p', 'Test', 'New Post', 'New Content', 'q')
                 app.menu()
 
                 mocked_ask_create_post.assert_called()
@@ -61,7 +64,7 @@ class AppTest(TestCase):
     def test_print_blogs(self):
         with patch('builtins.print') as mocked_print:
             app.print_blogs()
-            mocked_print.assert_called_with('- Test by Test Author (0 posts)')
+            mocked_print.assert_called_with('- Test by Test Author (0 post)')
 
     def test_ask_create_blog(self):
         with patch('builtins.input') as mocked_input:

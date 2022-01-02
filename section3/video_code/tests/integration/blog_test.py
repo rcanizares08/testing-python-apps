@@ -1,5 +1,5 @@
 from unittest import TestCase
-from blog import Blog
+from section3.video_code.blog import Blog
 
 
 class BlogTest(TestCase):
@@ -13,7 +13,7 @@ class BlogTest(TestCase):
     def test_blog_repr(self):
         b = Blog('Test', 'Test author')
 
-        self.assertEqual(str(b), 'Test by Test author (0 posts)')
+        self.assertEqual(str(b), 'Test by Test author (0 post)')
 
     def test_json_with_posts(self):
         b = Blog('Test', 'Test author')
